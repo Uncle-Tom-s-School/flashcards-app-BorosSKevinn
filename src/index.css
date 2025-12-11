@@ -1,16 +1,213 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-:root{
+:root {
   font-family: "Roboto";
+  user-select: none;
+
+  --green: #66cb92;
+  --red: #ff9396;
+  --bg-color-1: #fc00ff;
+  --bg-color-2: #00dbde;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body{
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
   width: 100%;
   min-height: 100vh;
 }
+
+.app {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(135deg, var(--bg-color-1), var(--bg-color-2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flashcards-container {
+  text-align: center;
+}
+
+.loading {
+  color: #ffffff;
+  font-size: 1.4rem;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 420px;
+  height: 260px;
+  perspective: 1000px;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 16px;
+}
+
+.flip-card-front {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  font-size: 22px;
+  font-weight: 600;
+  color: white;
+}
+
+.card-green {
+  background-color: var(--green);
+}
+
+.card-red {
+  background-color: var(--red);
+}
+
+.card-white {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.card-text {
+  max-width: 90%;
+}
+
+
+.flip-card-back {
+  background-color: #ffffff;
+  color: #333333;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+
+.card-header {
+  padding: 12px 20px;
+  font-weight: 600;
+  text-align: left;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-green {
+  background-color: var(--green);
+  color: #ffffff;
+}
+
+.header-red {
+  background-color: var(--red);
+  color: #ffffff;
+}
+
+.header-white {
+  background-color: #f5f5f5;
+  color: #333333;
+}
+
+.card-back-content {
+  flex: 1;
+  padding: 24px 24px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-answer {
+  font-size: 18px;
+  text-align: left;
+}
+
+.card-icons {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  font-size: 28px;
+  color: #999999;
+
+  i:nth-child(1) {
+    color: var(--green);
+    outline: var(--green) 5px solid;
+    outline-offset: 5px;
+    border-radius: 50%;
+  }
+
+  i:nth-child(2) {
+    color: var(--red);
+    outline: var(--red) 5px solid;
+    outline-offset: 5px;
+    border-radius: 50%;
+  }
+}
+
+.progress-wrapper {
+  width: 380px;
+  margin: 32px auto 0;
+  position: relative;
+  height: 18px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 200px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--green);
+  border-radius: 200px;
+}
+
+.progress-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  pointer-events: none;
+}
+
+
